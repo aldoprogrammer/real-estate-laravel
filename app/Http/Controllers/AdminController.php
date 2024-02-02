@@ -51,15 +51,25 @@ class AdminController extends Controller
         $data->address = $request->address;
         if ($request->file('photo')) {
             $file = $request->file('photo');
+            @unlink(public_path('upload/admin_images/' . $data->photo));
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $filename);
             $data['photo'] = $filename;
         }
 
-
+        $notification = array(
+            'message' => 'Admin Profile Updated Successfully',
+            'alert-type' => 'success'
+        );
 
         $data->save();
-        return redirect()->back();
+        return redirect()->back()->with($notification);
+    }
+
+    public function AdminChangePassword ()
+    {   $id = Auth::user()->id;
+        $profileData = User::find($id);
+        return view('admin.admin_change_password', compact('profileData'));
     }
 
 
