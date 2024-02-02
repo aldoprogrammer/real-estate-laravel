@@ -15,7 +15,7 @@
               <div>
                 <img class="wd-70 rounded-circle"
                 src="{{ (!empty($profileData->photo))
-                ? url('upload/admin_pages/'.$profileData->photo)
+                ? url('upload/admin_images/'.$profileData->photo)
                 : url('upload/no_image.jpg') }}"
                 alt="profile">
                 <span class="h4 ms-3">{{ $profileData->name }}</span>
@@ -61,7 +61,9 @@
 
                 <h6 class="card-title">Update Profile Admin</h6>
 
-                <form class="forms-sample">
+                <form class="forms-sample" method="POST" action="{{ route('admin.profile.store') }}"
+                enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-3">
                         <label for="exampleInputUsername1"
                         class="form-label">Username</label>
@@ -135,15 +137,12 @@
                             class="form-label"></label>
                             <img class="wd-70 rounded-circle"
                             id="showImage"
-                            src="{{ (!empty($profileData->photo))
-                            ? url('upload/admin_pages/'.$profileData->photo)
-                            : url('upload/no_image.jpg') }}"
+                            src="{{ (!empty($profileData->photo)) ? url('upload/admin_images/'.$profileData->photo) : url('upload/no_image.jpg') }}"
                             alt="profile">
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary me-2">Update Profile</button>
                 </form>
 
                 </div>
