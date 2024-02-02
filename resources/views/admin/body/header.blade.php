@@ -188,7 +188,7 @@
 
                 @php
                     $id = Auth::user()->id;
-                    $profilData = App\Models\User::find($id);
+                    $profileData = App\Models\User::find($id);
                 @endphp
 
             </li>

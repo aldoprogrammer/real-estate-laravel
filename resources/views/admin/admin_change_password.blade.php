@@ -61,7 +61,7 @@
 
                 <h6 class="card-title">Change Admin Password</h6>
 
-                <form class="forms-sample" method="POST" action="{{ route('admin.profile.store') }}"
+                <form class="forms-sample" method="POST" action="{{ route('admin.update.password') }}"
                 enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
@@ -97,9 +97,9 @@
                         class="form-label">Confirm New Password</label>
                         <input type="password"
                         class="form-control"
-                        id="confirm_new_password"
+                        id="new_password_confirmation"
                         autocomplete="off"
-                        name="confirm_new_password"
+                        name="new_password_confirmation"
                         placeholder="Confirm New Password">
                     </div>
 
